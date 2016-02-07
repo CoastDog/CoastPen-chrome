@@ -2,11 +2,12 @@ window.onload = function() {
   var server = new http.Server();
   server.addEventListener('request', function(req) {
     // Serve hihi.
-    console.log(req);
     req.writeHead(200, {
       'Content-Type': 'text/plain',
       'Content-Length': 5});
     req.end('hihi\n');
+    var laserExtensionId = 'llkmhohmbogloloockknondominpdlap';
+    chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true});
     return true;
   });
   server.listen(9099);
