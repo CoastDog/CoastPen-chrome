@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(e);
   });
   console.log('onLoad');
-  document.getElementById('ping').onclick = function() {
-    ws.send('ping');
+  document.getElementById('send').onclick = function() {
+    var value = document.getElementById('input_field').value;
+    ws.send(JSON.stringify({
+      action: 'input',
+      payload: value,
+    }));
   }
 });

@@ -18,10 +18,10 @@ window.onload = function() {
     var socket = req.accept();
     connectedSockets.push(socket);
     socket.addEventListener('message', function(e) {
-      console.log("on message")
-      console.log(e);
-      for (var i = 0; i < connectedSockets.length; i++)
-        connectedSockets[i].send('pong');
+      console.log("on message");
+      var data = JSON.parse(e.data);
+      console.log(data);
+      chrome.runtime.sendMessage(laserExtensionId, data);
     });
     socket.addEventListener('close', function() {
       console.log('Client disconnected');
