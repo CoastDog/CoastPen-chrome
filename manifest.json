@@ -3,17 +3,19 @@
     "description": "Chrome server for hand writing app",
     "version": "0.0.1",
     "manifest_version": 2,
-    "permissions": [
-        {
-            "socket": [
-                "tcp-connect",
-                "tcp-listen"
-            ]
-        }
-    ],
+    "sockets": {
+      "tcp": {
+        "connect": "*"
+      },
+      "tcpServer": {
+        "listen": "*"
+      }
+    },
+    "permissions": [],
     "app": {
         "background": {
             "scripts": [
+                "sha1.js",
                 "http.js",
                 "background.js"
             ]
